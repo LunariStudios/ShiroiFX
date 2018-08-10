@@ -38,20 +38,30 @@
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\ShiroiFX-Libraries\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\ShiroiFX-Libraries\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\UnityUtilities.1.0.0\lib\net35\UnityUtilities.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Colors\ColorizableController.cs" />
+    <Compile Include="Colors\GraphicColorizable.cs" />
+    <Compile Include="Colors\IColorizable.cs" />
+    <Compile Include="Effects\CompositeEffect.cs" />
+    <Compile Include="Effects\GameEffect.cs" />
+    <Compile Include="Effects\ParticleEffect.cs" />
+    <Compile Include="Effects\WorldEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BuiltIn\TimeController.cs" />
     <Compile Include="Services\ContinualService.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\ServiceController.cs" />
     <Compile Include="Services\TimedService.cs" />
+    <Compile Include="Utilities\EffectUtilities.cs" />
     <Compile Include="Utilities\ITickable.cs" />
-    <Compile Include="WorldEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

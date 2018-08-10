@@ -66,6 +66,18 @@ namespace Shiroi.FX.Services {
             return obj.Tick();
         }
 
+        public TimedService<T> RegisterTimedService(float duration, T meta, ushort priority = Service.DefaultPriority) {
+            var service = new TimedService<T>(duration, meta, priority);
+            RegisterService(service);
+            return service;
+        }
+
+        public ContinualService<T> RegisterContinualService(T meta, ushort priority = Service.DefaultPriority) {
+            var service = new ContinualService<T>(meta, priority);
+            RegisterService(service);
+            return service;
+        }
+
         public void RegisterService(Service service) {
             activeServices.Add(service);
         }

@@ -6,13 +6,6 @@ namespace Shiroi.FX.Services.BuiltIn {
     public class TimeController : ServiceController<TimeMeta> {
         public float DefaultTimeScale = 1;
 
-        public TimedService<T> RequestTimedService<T>(T meta, float duration, ushort priority = Service.DefaultPriority)
-            where T : TimeMeta {
-            var service = new TimedService<T>(duration, meta, priority);
-            RegisterService(service);
-            return service;
-        }
-
         protected override void UpdateGameToDefault() {
             Time.timeScale = DefaultTimeScale;
         }
@@ -24,6 +17,10 @@ namespace Shiroi.FX.Services.BuiltIn {
 
     public class AnimatedTimeMeta : TimeMeta, ITimedServiceTickable {
         public AnimationCurve Curve;
+        public AnimatedTimeMeta(AnimationCurve curve) {
+            Curve = curve;
+            currentPosition = 0;
+        }
         private float currentPosition;
 
         public override float GetTimeScale() {

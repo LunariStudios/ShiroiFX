@@ -6,7 +6,7 @@ namespace Shiroi.FX.Services {
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class ContinualService<T> : Service<T> {
-        public ContinualService(ushort priority, T meta) : base(meta, priority) {
+        public ContinualService(T meta, ushort priority) : base(meta, priority) {
             Cancelled = false;
         }
 
