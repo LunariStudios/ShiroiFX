@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Shiroi.FX.Services.BuiltIn;
+using UnityEngine;
+
 namespace Shiroi.FX.Services {
     public interface ITimedServiceTickable {
         void Tick(ITimedService service);
@@ -19,6 +21,10 @@ namespace Shiroi.FX.Services {
         }
     }
 
+    /// <summary>
+    /// A service that is executed over a certain timespan.
+    /// </summary>
+    /// <typeparam name="T">The type of the meta this service carries.</typeparam>
     public class TimedService<T> : Service<T>, ITimedService {
         public TimedService(float duration, T meta, ushort priority = DefaultPriority) : base(meta, priority) {
             TotalDuration = duration;

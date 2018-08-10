@@ -14,7 +14,7 @@
 # ShiroiFX
 This library was made to make creating game feel and effects easily.
 ## Features
-* So easy to use it should be illegal
+* Created to be absurdly easy to use.
 * Ever wanted to affect something with multiple different values 
 and then blend then all together in the final result? We present to you **Services**!
 * Documented 
@@ -47,8 +47,8 @@ var curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 var serviceA = timeController.RegisterContinualService(meta: new ConstantTimeMeta(2), priority: 10);
 var serviceB = timeController.RegisterTimedService(duration: 5, meta: new AnimatedTimeMeta(curve), priority: 20);
 /* 
- * Services A and B are automatically blended on the 
- * by the TimeController based on their priorities
+ * Services A and B are automatically blended by the   
+ * TimeController based on their priorities
  */
 ```
 ## Getting Started  
