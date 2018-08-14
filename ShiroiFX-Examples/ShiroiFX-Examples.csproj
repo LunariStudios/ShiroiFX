@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E8DD6165-9A33-49C7-B864-F3D64DBFB8B6}</ProjectGuid>
+    <ProjectGuid>{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shiroi.FX</RootNamespace>
-    <AssemblyName>ShiroiFX</AssemblyName>
+    <RootNamespace>Shiroi.FX.Examples</RootNamespace>
+    <AssemblyName>Shiroi.FX.Examples</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,40 +34,23 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\ShiroiFX-Libraries\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\ShiroiFX-Libraries\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\UnityUtilities.1.0.0\lib\net35\UnityUtilities.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\..\Program Files\Unity\Hub\Editor\2018.2.1f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Colors\ColorFeatures.cs" />
-    <Compile Include="Colors\ColorHSV.cs" />
-    <Compile Include="Effects\CompositeEffect.cs" />
-    <Compile Include="Effects\Effect.cs" />
-    <Compile Include="Effects\EffectContext.cs" />
-    <Compile Include="Effects\EffectExtensions.cs" />
-    <Compile Include="Effects\Exceptions.cs" />
-    <Compile Include="Effects\ParticleEffect.cs" />
-    <Compile Include="Effects\PositionFeature.cs" />
+    <Compile Include="Ownable.cs" />
+    <Compile Include="Projectile.cs" />
+    <Compile Include="ProjectileShooter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BuiltIn\TimeController.cs" />
-    <Compile Include="Services\ContinualService.cs" />
-    <Compile Include="Services\Service.cs" />
-    <Compile Include="Services\ServiceController.cs" />
-    <Compile Include="Services\TimedService.cs" />
-    <Compile Include="Utilities\EffectUtilities.cs" />
-    <Compile Include="Utilities\ITickable.cs" />
-    <Compile Include="Utilities\ServiceControllerUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\ShiroiFX\ShiroiFX.csproj">
+      <Project>{e8dd6165-9a33-49c7-b864-f3d64dbfb8b6}</Project>
+      <Name>ShiroiFX</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

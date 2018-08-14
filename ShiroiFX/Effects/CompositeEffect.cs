@@ -1,19 +1,13 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 
 namespace Shiroi.FX.Effects {
-    public class CompositeEffect : WorldEffect {
-        public List<WorldEffect> Effects = new List<WorldEffect>();
-        public List<GameEffect> GameEffects = new List<GameEffect>();
+    public class CompositeEffect : Effect {
+        public List<Effect> Effects = new List<Effect>();
 
-        public override void Execute(Vector3 position) {
-            foreach (var fx in Effects) {
-                fx.Execute(position);
-            }
-
-            foreach (var fx in GameEffects) {
-                fx.Execute();
+        public override void Play(EffectContext context) {
+            foreach (var effect in Effects) {
+                effect.Play(context);
             }
         }
     }
