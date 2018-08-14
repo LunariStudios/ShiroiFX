@@ -21,7 +21,7 @@ ProjectSection(SolutionItems) = preProject
 	ShiroiFX-Assets\Logo.png = ShiroiFX-Assets\Logo.png
 EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShiroiFX-Editor", "ShiroiFX-Editor\ShiroiFX-Editor.csproj", "{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShiroiFX-Examples", "ShiroiFX-Examples\ShiroiFX-Examples.csproj", "{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +33,9 @@ Global
 		{E8DD6165-9A33-49C7-B864-F3D64DBFB8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8DD6165-9A33-49C7-B864-F3D64DBFB8B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8DD6165-9A33-49C7-B864-F3D64DBFB8B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

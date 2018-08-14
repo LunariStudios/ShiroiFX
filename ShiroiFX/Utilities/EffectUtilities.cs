@@ -1,17 +1,20 @@
-﻿using Shiroi.FX.Effects;
+﻿using System;
+using Shiroi.FX.Effects;
 using UnityEngine;
 
 namespace Shiroi.FX.Utilities {
     public static class EffectUtilities {
-        public static void ExecuteIfPresent(this GameEffect effect) {
+        public delegate EffectContext ContextCreator();
+
+        public static void PlayIfPresent(this Effect effect, EffectContext context) {
             if (effect != null) {
-                effect.Execute();
+                effect.Play(context);
             }
         }
 
-        public static void ExecuteIfPresent(this WorldEffect effect, Vector3 position) {
+        public static void PlayIfPresent(this Effect effect, ContextCreator contextCreator) {
             if (effect != null) {
-                effect.Execute(position);
+                effect.Play(contextCreator());
             }
         }
     }
