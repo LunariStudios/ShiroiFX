@@ -2,7 +2,6 @@
 
 namespace Shiroi.FX.Editor {
     public static class ShiroiFXEditorResources {
-        public static readonly GUIContent FXName = new GUIContent("FX Name", "The name of the effect");
         public static readonly GUIContent EditFX = new GUIContent("Edit FX", "Selects the effect for editing");
 
         public static readonly GUIContent RemoveFX = new GUIContent(

@@ -49,12 +49,12 @@
   <ItemGroup>
     <Compile Include="Colors\ColorFeatures.cs" />
     <Compile Include="Colors\ColorHSV.cs" />
-    <Compile Include="Effects\CompositeEffect.cs" />
+    <Compile Include="Effects\BuiltIn\CompositeEffect.cs" />
+    <Compile Include="Effects\BuiltIn\ParticleEffect.cs" />
     <Compile Include="Effects\Effect.cs" />
     <Compile Include="Effects\EffectContext.cs" />
     <Compile Include="Effects\EffectExtensions.cs" />
     <Compile Include="Effects\Exceptions.cs" />
-    <Compile Include="Effects\ParticleEffect.cs" />
     <Compile Include="Effects\PositionFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BuiltIn\TimeController.cs" />

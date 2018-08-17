@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityUtilities;
 
-namespace Shiroi.FX.Effects {
+namespace Shiroi.FX.Effects.BuiltIn {
     public class ParticleEffect : Effect {
         public ParticleSystem ParticlePrefab;
         public bool ForceDestroyOnFinished = true;

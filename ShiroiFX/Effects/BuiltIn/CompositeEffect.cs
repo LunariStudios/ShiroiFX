@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-
-namespace Shiroi.FX.Effects {
+namespace Shiroi.FX.Effects.BuiltIn {
     public class CompositeEffect : Effect {
         public List<Effect> Effects = new List<Effect>();
 

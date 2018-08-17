@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Shiroi.FX.Effects;
 using UnityEditor;
 using UnityEngine;
 using UnityUtilities;
 
 namespace Shiroi.FX.Editor.PopUp {
-    public class EffectSelectorContent<T> : PopupWindowContent {
+    public class EffectSelectorContent : PopupWindowContent {
         public const float Width = 300;
         private List<Type> types;
         private Action<Type> onSelected;
 
         public EffectSelectorContent(Action<Type> onSelected) {
-            this.types = TypeUtility.GetAllSubtypesOf<T>().ToList();
+            this.types = TypeUtility.GetAllTypesOf<Effect>().Where(type => type != typeof(Effect)).ToList();
             this.onSelected = onSelected;
         }
 
