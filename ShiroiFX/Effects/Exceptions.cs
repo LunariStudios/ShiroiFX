@@ -1,4 +1,5 @@
 ﻿using System;
+using Shiroi.FX.Features;
 
 namespace Shiroi.FX.Effects {
     public class FeatureNotPresentException<T> : Exception {

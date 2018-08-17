@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using Shiroi.FX.Colors;
+using Shiroi.FX.Features;
 using UnityEngine;
 
 namespace Shiroi.FX.Effects {
@@ -59,13 +60,5 @@ namespace Shiroi.FX.Effects {
             throw new FeatureNotPresentException<F>();
         }
 
-    }
-
-    public abstract class EffectFeature {
-        private PropertyName[] tags;
-
-        protected EffectFeature(params PropertyName[] tags) {
-            this.tags = tags;
-        }
     }
 }

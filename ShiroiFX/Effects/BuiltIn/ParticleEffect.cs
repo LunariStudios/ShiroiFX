@@ -1,4 +1,5 @@
 ﻿using Shiroi.FX.Colors;
+using Shiroi.FX.Features;
 using UnityEngine;
 using UnityUtilities;
 
@@ -8,6 +9,10 @@ namespace Shiroi.FX.Effects.BuiltIn {
         public bool ForceDestroyOnFinished = true;
 
         private void OnEnable() {
+            if (ParticlePrefab == null) {
+                return;
+            }
+
             var main = ParticlePrefab.main;
             main.playOnAwake = false;
         }
@@ -40,6 +45,13 @@ namespace Shiroi.FX.Effects.BuiltIn {
                 SetParticleColor(instance, minMaxGradient);
             }
 
+            var material = context.GetOptionalFeature<MaterialFeature>();
+            if (material != null) {
+                var renderer = instance.GetComponent<ParticleSystemRenderer>();
+                renderer.sharedMaterial = material.Material;
+            }
+
+            OnDefaultSetupFinished(instance, context);
             if (!ForceDestroyOnFinished) {
                 return;
             }
@@ -51,6 +63,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
             }
         }
 
+        protected virtual void OnDefaultSetupFinished(ParticleSystem instance, EffectContext context) { }
 
         private static void SetParticleColor(ParticleSystem instance, MinMaxGradientFeature minMaxGradient) {
             var main = instance.main;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Shiroi.FX.Features;
+using UnityEngine;
 
 namespace Shiroi.FX.Effects {
     public sealed class PositionFeature : EffectFeature {
