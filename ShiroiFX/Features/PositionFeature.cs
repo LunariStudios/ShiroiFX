@@ -1,7 +1,6 @@
-﻿using Shiroi.FX.Features;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Shiroi.FX.Effects {
+namespace Shiroi.FX.Features {
     public sealed class PositionFeature : EffectFeature {
         private readonly Vector3 position;
 

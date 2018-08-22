@@ -24,6 +24,12 @@ namespace Shiroi.FX.Editor {
             CreateEffect<FreezeFrameEffect>();
         }
 
+
+        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Create Audio Effect", false, 5)]
+        public static void CreateAudioEffect() {
+            CreateEffect<AudioEffect>();
+        }
+
         private static void CreateEffect<T>() where T : ScriptableObject {
             var effect = ScriptableObject.CreateInstance<T>();
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);

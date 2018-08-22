@@ -12,7 +12,7 @@ namespace Shiroi.FX.Effects {
 
         public static void CheckIncompatibleFeatures(this Effect effect, params EffectFeature[] toCheck) {
             var found = (from feature in toCheck where feature != null select feature).ToList();
-            if (found.Count > 0) {
+            if (found.Count > 1) {
                 effect.ThrowIncompatibleFeaturesException(found.ToArray());
             }
         }
