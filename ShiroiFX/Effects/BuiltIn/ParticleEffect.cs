@@ -1,10 +1,19 @@
 ﻿using Shiroi.FX.Colors;
+using Shiroi.FX.Effects.Requirements;
 using Shiroi.FX.Features;
 using UnityEngine;
 using UnityUtilities;
 
 namespace Shiroi.FX.Effects.BuiltIn {
-    public class ParticleEffect : Effect {
+    [RequiresFeature(typeof(PositionFeature))]
+    [OptinalFeature(
+        typeof(ColorFeature),
+        typeof(GradientFeature),
+        typeof(MinMaxColorFeature),
+        typeof(MinMaxGradientFeature),
+        typeof(MaterialFeature)
+    )]
+    public sealed class ParticleEffect : Effect {
         public ParticleSystem ParticlePrefab;
         public bool ForceDestroyOnFinished = true;
 
@@ -63,7 +72,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
             }
         }
 
-        protected virtual void OnDefaultSetupFinished(ParticleSystem instance, EffectContext context) { }
+        private void OnDefaultSetupFinished(ParticleSystem instance, EffectContext context) { }
 
         private static void SetParticleColor(ParticleSystem instance, MinMaxGradientFeature minMaxGradient) {
             var main = instance.main;

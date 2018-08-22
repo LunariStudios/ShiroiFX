@@ -18,6 +18,7 @@ namespace Shiroi.FX.Examples {
             Rigidbody.velocity = direction;
             ShotEffect.PlayIfPresent(
                 new EffectContext(
+                    this,
                     new PositionFeature(transform.position),
                     new ColorFeature(ProjetileColor)
                 )
@@ -27,6 +28,7 @@ namespace Shiroi.FX.Examples {
         private void OnCollisionEnter(Collision other) {
             HitEffect.Play(
                 new EffectContext(
+                    this,
                     new PositionFeature(transform.position),
                     new ColorFeature(ProjetileColor)
                 )

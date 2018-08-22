@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
@@ -7,16 +8,19 @@ using Shiroi.FX.Features;
 using UnityEngine;
 
 namespace Shiroi.FX.Effects {
-    
-
     [Serializable]
     public sealed class EffectContext {
+        private readonly MonoBehaviour host;
         private readonly EffectFeature[] features;
 
-        public EffectContext(params EffectFeature[] features) {
+        public EffectContext(MonoBehaviour host, params EffectFeature[] features) {
             this.features = features;
+            this.host = host;
         }
 
+        public Coroutine StartCoroutine(IEnumerator routine) {
+            return host.StartCoroutine(routine);
+        }
 
         [CanBeNull]
         public F GetOptionalFeature<F>() where F : EffectFeature {
@@ -42,7 +46,6 @@ namespace Shiroi.FX.Effects {
                 if (f == null) {
                     continue;
                 }
-                
             }
 
             return null;
@@ -59,6 +62,5 @@ namespace Shiroi.FX.Effects {
 
             throw new FeatureNotPresentException<F>();
         }
-
     }
 }

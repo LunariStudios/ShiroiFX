@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 namespace Shiroi.FX.Services.BuiltIn {
-    public class TimeController : ServiceController<TimeMeta> {
+    public class TimeController : SingletonServiceController<TimeController, TimeMeta> {
         public float DefaultTimeScale = 1;
 
         protected override void UpdateGameToDefault() {
@@ -13,14 +13,24 @@ namespace Shiroi.FX.Services.BuiltIn {
         protected override void UpdateGameTo(IEnumerable<WeightnedMeta<TimeMeta>> activeMetas) {
             Time.timeScale = activeMetas.Sum(weightnedMeta => weightnedMeta.Weight * weightnedMeta.Meta.GetTimeScale());
         }
+
+        public override void RegisterService(Service service) {
+            base.RegisterService(service);
+            var timed = service as ITimedService;
+            if (timed != null && !timed.IgnoreTimeScale) {
+                timed.IgnoreTimeScale = true;
+            }
+        }
     }
 
     public class AnimatedTimeMeta : TimeMeta, ITimedServiceTickable {
         public AnimationCurve Curve;
+
         public AnimatedTimeMeta(AnimationCurve curve) {
             Curve = curve;
             currentPosition = 0;
         }
+
         private float currentPosition;
 
         public override float GetTimeScale() {

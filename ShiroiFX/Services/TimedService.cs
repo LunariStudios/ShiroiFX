@@ -19,6 +19,11 @@ namespace Shiroi.FX.Services {
         float PercentageCompleted {
             get;
         }
+
+        bool IgnoreTimeScale {
+            get;
+            set;
+        }
     }
 
     /// <summary>
@@ -26,9 +31,16 @@ namespace Shiroi.FX.Services {
     /// </summary>
     /// <typeparam name="T">The type of the meta this service carries.</typeparam>
     public class TimedService<T> : Service<T>, ITimedService {
-        public TimedService(float duration, T meta, ushort priority = DefaultPriority) : base(meta, priority) {
+        public TimedService(float duration, T meta, bool ignoreTimeScale = false, ushort priority = DefaultPriority) :
+            base(meta, priority) {
             TotalDuration = duration;
             TimeLeft = duration;
+            IgnoreTimeScale = ignoreTimeScale;
+        }
+
+        public bool IgnoreTimeScale {
+            get;
+            set;
         }
 
         public float TotalDuration {
@@ -53,7 +65,11 @@ namespace Shiroi.FX.Services {
                 timed.Tick(this);
             }
 
-            return (TimeLeft -= Time.deltaTime) <= 0;
+            return (TimeLeft -= GetDeltaTime()) <= 0;
+        }
+
+        private float GetDeltaTime() {
+            return IgnoreTimeScale ? Time.unscaledDeltaTime : Time.deltaTime;
         }
 
         public override void Cancel() {

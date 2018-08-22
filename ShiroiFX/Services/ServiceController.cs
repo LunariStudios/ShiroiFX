@@ -43,6 +43,10 @@ namespace Shiroi.FX.Services {
 
             hadActiveServiceLastFrame = true;
             activeServices.RemoveAll(ServiceUpdater);
+            if (activeServices.IsNullOrEmpty()) {
+                return;
+            }
+
             var highestPriority = activeServices.Max(service => service.Priority);
             var metas = GetAllActiveServices().Select(service
                 => new WeightnedMeta<T>((float) service.Priority / highestPriority, service.Meta));
@@ -66,7 +70,7 @@ namespace Shiroi.FX.Services {
             return obj.Tick();
         }
 
-        public void RegisterService(Service service) {
+        public virtual void RegisterService(Service service) {
             activeServices.Add(service);
         }
 
@@ -76,6 +80,17 @@ namespace Shiroi.FX.Services {
                 if (s != null) {
                     yield return s;
                 }
+            }
+        }
+    }
+
+    public abstract class SingletonServiceController<S, T> : ServiceController<T>
+        where S : SingletonServiceController<S, T> {
+        private static S loadedInstance;
+
+        public static S Instance {
+            get {
+                return loadedInstance == null ? (loadedInstance = FindObjectOfType<S>()) : loadedInstance;
             }
         }
     }

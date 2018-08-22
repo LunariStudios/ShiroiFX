@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositeEffectEditor.cs" />
+    <Compile Include="EffectEditor.cs" />
+    <Compile Include="FreezeFrameEffectEditor.cs" />
     <Compile Include="PopUp\EffectSelectorContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShiroiFXEditor.cs" />

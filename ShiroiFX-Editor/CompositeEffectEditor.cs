@@ -10,6 +10,14 @@ using UnityUtilities.Editor;
 namespace Shiroi.FX.Editor {
     [CustomEditor(typeof(CompositeEffect))]
     public class CompositeEffectEditor : UnityEditor.Editor {
+        public static readonly GUIContent CompositeEffectTitle = new GUIContent(
+            "Composite Effect"
+        );
+
+        public static readonly GUIContent CompositeEffectSubtitle = new GUIContent(
+            "A composite effect executes each sub effect using the context that was passed into it."
+        );
+
         private CompositeEffect effect;
         private EffectSelectorContent effectSelector;
 
@@ -27,6 +35,7 @@ namespace Shiroi.FX.Editor {
         public override void OnInspectorGUI() {
             var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
             EditorGUILayout.BeginVertical(skin.box);
+            ShiroiFXEditor.DrawTitle(CompositeEffectTitle, CompositeEffectSubtitle);
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("Sub Effects", EditorStyles.boldLabel);
             var r = GUILayout.Button(ShiroiFXEditorResources.AddEffect);

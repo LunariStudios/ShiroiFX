@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Shiroi.FX.Editor {
     public static class ShiroiFXEditorResources {
@@ -28,5 +29,17 @@ namespace Shiroi.FX.Editor {
 
         public const string BasePath = "Shiroi/FX/";
         public const string BaseCreatePath = "Assets/Create/" + BasePath;
+        public static readonly Color SubtitleColor = new Color(0.06f, 0.06f, 0.06f, 0.7f);
+
+        public static readonly GUIStyle Subtitle = new GUIStyle() {
+            //font = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).font,
+            fontSize = 10,
+            wordWrap = true,
+            normal = {
+                textColor = SubtitleColor
+            }
+        };
+
+        public static Color TitleLineColor = new Color(0f, 0f, 0f, 0.5f);
     }
 }
