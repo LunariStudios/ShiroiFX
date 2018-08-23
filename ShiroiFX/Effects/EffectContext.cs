@@ -18,6 +18,12 @@ namespace Shiroi.FX.Effects {
             this.host = host;
         }
 
+        public MonoBehaviour Host {
+            get {
+                return host;
+            }
+        }
+
         public Coroutine StartCoroutine(IEnumerator routine) {
             return host.StartCoroutine(routine);
         }

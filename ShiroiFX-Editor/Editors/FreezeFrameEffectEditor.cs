@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 
-namespace Shiroi.FX.Editor {
+namespace Shiroi.FX.Editor.Editors {
     [CustomEditor(typeof(FreezeFrameEffect))]
     public class FreezeFrameEffectEditor : UnityEditor.Editor {
         public static readonly GUIContent FreezeFrameTitle = new GUIContent(
@@ -41,7 +41,8 @@ namespace Shiroi.FX.Editor {
             "Controls blending between multiple FreezeFrameEffects"
         );
 
-        public static readonly GUIContent UseTimeControllerContent = new GUIContent("Use Time Controller if present",
+        public static readonly GUIContent UseTimeControllerContent = new GUIContent(
+            "Use Time Controller if present",
             "If there is an active TimeController on the scene, this effect will be run as a service instead." +
             " (This allows time scale blending if more than one FreezeFrameEffect is playing)");
 
@@ -82,40 +83,30 @@ namespace Shiroi.FX.Editor {
             EffectEditor.AttemptDrawAttributes(requiredFeature, optinalFeature);
             var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
             EditorGUILayout.BeginVertical(skin.box);
-            ShiroiFXEditor.DrawTitle(FreezeFrameTitle, FreezeFrameSubtitle);
+            ShiroiFXGUI.DrawTitle(FreezeFrameTitle, FreezeFrameSubtitle);
             DrawEffectTimeScale();
             DrawUseTimeController();
             EditorGUILayout.EndVertical();
         }
 
         private void DrawUseTimeController() {
-            ShiroiFXEditor.DrawTitle(TimeControllerTitle, TimeControllerSubtitle);
+            ShiroiFXGUI.DrawTitle(TimeControllerTitle, TimeControllerSubtitle);
             usesTimeController.target = effect.UseTimeControllerIfPresent =
                 EditorGUILayout.Toggle(UseTimeControllerContent, effect.UseTimeControllerIfPresent);
             if (EditorGUILayout.BeginFadeGroup(usesTimeController.faded)) {
-                effect.ServicePriority = (ushort) EditorGUILayout.IntSlider(ServicePriority, effect.ServicePriority,
-                    ushort.MinValue, ushort.MaxValue);
+                effect.ServicePriority = (ushort) EditorGUILayout.IntSlider(
+                    ServicePriority,
+                    effect.ServicePriority,
+                    ushort.MinValue,
+                    ushort.MaxValue);
             }
 
             EditorGUILayout.EndFadeGroup();
         }
 
         private void DrawEffectTimeScale() {
-            ShiroiFXEditor.DrawTitle(TimeScaleTitle, TimeScaleSubtitleHeader);
-            effect.Mode =
-                (FreezeFrameEffect.FreezeFrameMode) EditorGUILayout.EnumPopup(TimeScaleModeContent, effect.Mode);
-            usesContantValue.target = effect.Mode == FreezeFrameEffect.FreezeFrameMode.Constant;
-            var fadeValue = usesContantValue.faded;
-            if (EditorGUILayout.BeginFadeGroup(fadeValue)) {
-                effect.ConstantTimeScale = EditorGUILayout.FloatField(TimeScaleContent, effect.ConstantTimeScale);
-            }
-
-            EditorGUILayout.EndFadeGroup();
-            if (EditorGUILayout.BeginFadeGroup(1 - fadeValue)) {
-                effect.AnimatedTimeScale = EditorGUILayout.CurveField(TimeScaleContent, effect.AnimatedTimeScale);
-            }
-
-            EditorGUILayout.EndFadeGroup();
+            ShiroiFXGUI.DrawTitle(TimeScaleTitle, TimeScaleSubtitleHeader);
+            ShiroiFXGUI.DrawAnimatedOrConstantValue(TimeScaleContent, TimeScaleModeContent, ref effect.Mode, ref usesContantValue, ref effect.ConstantTimeScale, ref effect.AnimatedTimeScale);
             effect.Duration = EditorGUILayout.FloatField(DurationContent, effect.Duration);
         }
     }

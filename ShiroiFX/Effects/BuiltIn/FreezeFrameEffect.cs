@@ -7,11 +7,6 @@ using UnityEngine;
 
 namespace Shiroi.FX.Effects.BuiltIn {
     public class FreezeFrameEffect : Effect {
-        public enum FreezeFrameMode {
-            Constant,
-            Animated
-        }
-
         [Tooltip("The effect scale to be used when in the Constant mode")]
         public float ConstantTimeScale;
 
@@ -26,7 +21,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
             "Constant you set ConstantTimeScale to. " +
             "Animated evaluates AnimatedTimeScale using PassedDuration / Duration"
         )]
-        public FreezeFrameMode Mode;
+        public ValueControlMode Mode;
 
         [Tooltip(
             "If there is an active TimeController on the scene, this effect will be run as a service instead." +
@@ -50,9 +45,9 @@ namespace Shiroi.FX.Effects.BuiltIn {
 
         private TimeMeta CreateTimeMeta() {
             switch (Mode) {
-                case FreezeFrameMode.Constant:
+                case ValueControlMode.Constant:
                     return new ConstantTimeMeta(ConstantTimeScale);
-                case FreezeFrameMode.Animated:
+                case ValueControlMode.Animated:
                     return new AnimatedTimeMeta(AnimatedTimeScale);
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -61,9 +56,9 @@ namespace Shiroi.FX.Effects.BuiltIn {
 
         private float GetTimeScale(float time) {
             switch (Mode) {
-                case FreezeFrameMode.Constant:
+                case ValueControlMode.Constant:
                     return ConstantTimeScale;
-                case FreezeFrameMode.Animated:
+                case ValueControlMode.Animated:
                     return AnimatedTimeScale.Evaluate(time);
                 default:
                     throw new ArgumentOutOfRangeException();

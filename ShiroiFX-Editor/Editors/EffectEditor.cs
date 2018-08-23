@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityUtilities.Editor;
 
-namespace Shiroi.FX.Editor {
+namespace Shiroi.FX.Editor.Editors {
     [CustomEditor(typeof(Effect), true)]
     public class EffectEditor : UnityEditor.Editor {
         private Effect effect;

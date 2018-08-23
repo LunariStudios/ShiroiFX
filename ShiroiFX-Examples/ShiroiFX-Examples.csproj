@@ -37,7 +37,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\Program Files\Unity\Hub\Editor\2018.2.1f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\ShiroiFX-Libraries\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

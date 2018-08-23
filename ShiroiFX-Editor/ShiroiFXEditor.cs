@@ -44,17 +44,5 @@ namespace Shiroi.FX.Editor {
             AssetDatabase.CreateAsset(effect, assetPathAndName);
             AssetDatabase.SaveAssets();
         }
-
-        public static void DrawTitle(GUIContent title, GUIContent subtitle) {
-            GUILayout.Space(5);
-            EditorGUILayout.LabelField(title, EditorStyles.boldLabel);
-            EditorGUILayout.LabelField(subtitle, ShiroiFXEditorResources.Subtitle);
-            var rect = GUILayoutUtility.GetRect(10, 200, 1, 1, GUILayout.ExpandWidth(true));
-            var oldColor = GUI.color;
-            GUI.color = ShiroiFXEditorResources.TitleLineColor;
-            GUI.DrawTexture(rect, EditorGUIUtility.whiteTexture);
-            GUI.color = oldColor;
-            GUILayout.Space(5);
-        }
     }
 }

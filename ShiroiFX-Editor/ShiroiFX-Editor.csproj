@@ -52,13 +52,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositeEffectEditor.cs" />
-    <Compile Include="EffectEditor.cs" />
-    <Compile Include="FreezeFrameEffectEditor.cs" />
+    <Compile Include="Drawers\ModularFloatDrawer.cs" />
+    <Compile Include="Drawers\ModularRangeDrawer.cs" />
+    <Compile Include="Drawers\RangeDrawer.cs" />
+    <Compile Include="Editors\AudioEffectEditor.cs" />
+    <Compile Include="Editors\CompositeEffectEditor.cs" />
+    <Compile Include="Editors\EffectEditor.cs" />
+    <Compile Include="Editors\FreezeFrameEffectEditor.cs" />
     <Compile Include="PopUp\EffectSelectorContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShiroiFXEditor.cs" />
     <Compile Include="ShiroiFXEditorResources.cs" />
+    <Compile Include="ShiroiFXGUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShiroiFX\ShiroiFX.csproj">

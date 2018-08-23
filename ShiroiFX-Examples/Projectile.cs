@@ -21,10 +21,14 @@ namespace Shiroi.FX.Examples {
                 new EffectContext(
                     this,
                     new PositionFeature(transform.position),
-                    new ColorFeature(ProjetileColor)
+                    new ColorFeature(ProjetileColor),
+                    new VelocityFeature(direction),
+                    new FloatFeature(Random.value, "Volume"),
+                    new FloatFeature(Random.value, "Pitch")
                 )
             );
         }
+
 
         private void OnCollisionEnter(Collision other) {
             HitEffect.Play(
