@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Shiroi.FX.Editor.PopUp;
 using Shiroi.FX.Effects;
@@ -46,13 +47,19 @@ namespace Shiroi.FX.Editor.Editors {
             }
 
             EditorGUILayout.EndHorizontal();
+            var toRemove = new List<Effect>();
+            foreach (var subEffect in effect.Effects) {
+                bool remove;
+                DrawFX(subEffect, skin, out remove);
+                if (remove) {
+                    toRemove.Add(subEffect);
+                }
+            }
 
-            effect.Effects.RemoveAll(
-                gameEffect => {
-                    bool result;
-                    DrawFX(gameEffect, skin, out result);
-                    return result;
-                });
+            foreach (var fx in toRemove) {
+                effect.Effects.Remove(fx);
+                Destroy(fx);
+            }
             EditorGUILayout.EndVertical();
         }
 
