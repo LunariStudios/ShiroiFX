@@ -15,6 +15,12 @@ namespace Shiroi.FX.Effects.BuiltIn {
         typeof(MinMaxCurveFeature),
         typeof(FloatFeature)
     )]
+    [RequirementsDescription(
+        "The position at which the sound will be played, if not present, the source will be attached to the context's host.",
+        "The velocity of the audio source (causes doppler effect).",
+        "Used for pitch and/or volume if their sources are set to be the context",
+        "Used for loop duration if it's in use and source is set to be the context"
+    )]
     public class AudioEffect : Effect {
         public AudioClip[] Clips;
         public ContinousModularFloat Volume = 0.6F;
@@ -40,7 +46,8 @@ namespace Shiroi.FX.Effects.BuiltIn {
             AudioSource.PlayClipAtPoint(clip, position, LoadVolume(context).Evaluate(Random.value));
         }
 
-        private void PlayWithController(PositionFeature position, EffectContext context, AudioClip clip, AudioController controller) {
+        private void PlayWithController(PositionFeature position, EffectContext context, AudioClip clip,
+            AudioController controller) {
             AudioEvent audioEvent;
             var volume = LoadVolume(context);
             var pitch = LoadPitch(context);
@@ -50,7 +57,8 @@ namespace Shiroi.FX.Effects.BuiltIn {
             } else {
                 var velFeature = context.GetOptionalFeature<VelocityFeature>();
                 var velocity = velFeature != null ? velFeature.Velocity : Vector3.zero;
-                audioEvent = new AudioEvent(clip, pitch, volume, position.Position, Loop, loopDuration, Mixer, velocity);
+                audioEvent = new AudioEvent(clip, pitch, volume, position.Position, Loop, loopDuration, Mixer,
+                    velocity);
             }
 
             controller.PlayAudioEvent(audioEvent);

@@ -13,6 +13,14 @@ namespace Shiroi.FX.Effects.BuiltIn {
         typeof(MinMaxGradientFeature),
         typeof(MaterialFeature)
     )]
+    [RequirementsDescription(
+        "The position in which to play the effect in.",
+        "If present, the particle's color is set to the provided color. (Is incompatible with the other \"color features\")",
+        "If present, the particle's color is set to the provided gradient. (Is incompatible with the other \"color features\")",
+        "If present, the particle's color is set to the provided min-max color. (Is incompatible with the other \"color features\")",
+        "If present, the particle's color is set to the provided min-max gradient. (Is incompatible with the other \"color features\")",
+        "If present, the particle's material is set to the provided material."
+    )]
     public sealed class ParticleEffect : Effect {
         public ParticleSystem ParticlePrefab;
         public bool ForceDestroyOnFinished = true;

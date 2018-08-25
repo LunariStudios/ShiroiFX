@@ -49,20 +49,15 @@ namespace Shiroi.FX.Editor.Editors {
         public static readonly GUIContent ServicePriority = new GUIContent("Service priority");
 
         private FreezeFrameEffect effect;
-        private RequiresFeatureAttribute requiredFeature;
-        private OptinalFeatureAttribute optinalFeature;
         private AnimBool usesContantValue;
         private AnimBool usesTimeController;
+        private EffectHeader header;
 
         private void OnEnable() {
             InitAnimBool(out usesContantValue);
             InitAnimBool(out usesTimeController);
-
-
             effect = (FreezeFrameEffect) target;
-            var type = effect.GetType();
-            TryLoadAttribute(type, out requiredFeature);
-            TryLoadAttribute(type, out optinalFeature);
+            header = new EffectHeader(typeof(FreezeFrameEffect));
         }
 
         private void InitAnimBool(out AnimBool animBool) {
@@ -80,7 +75,7 @@ namespace Shiroi.FX.Editor.Editors {
         }
 
         public override void OnInspectorGUI() {
-            EffectEditor.AttemptDrawAttributes(requiredFeature, optinalFeature);
+            header.DoLayout();
             var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
             EditorGUILayout.BeginVertical(skin.box);
             ShiroiFXGUI.DrawTitle(FreezeFrameTitle, FreezeFrameSubtitle);
@@ -106,7 +101,8 @@ namespace Shiroi.FX.Editor.Editors {
 
         private void DrawEffectTimeScale() {
             ShiroiFXGUI.DrawTitle(TimeScaleTitle, TimeScaleSubtitleHeader);
-            ShiroiFXGUI.DrawAnimatedOrConstantValue(TimeScaleContent, TimeScaleModeContent, ref effect.Mode, ref usesContantValue, ref effect.ConstantTimeScale, ref effect.AnimatedTimeScale);
+            ShiroiFXGUI.DrawAnimatedOrConstantValue(TimeScaleContent, TimeScaleModeContent, ref effect.Mode,
+                ref usesContantValue, ref effect.ConstantTimeScale, ref effect.AnimatedTimeScale);
             effect.Duration = EditorGUILayout.FloatField(DurationContent, effect.Duration);
         }
     }

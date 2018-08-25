@@ -16,8 +16,10 @@ namespace Shiroi.FX.Editor.Editors {
         public static readonly GUIContent LoopSubtitle = new GUIContent("Loop information, such as duration and mode");
         private AnimBool loops;
         private ReorderableList clipList;
+        private EffectHeader header;
 
         private void OnEnable() {
+            header = new EffectHeader(typeof(AudioEffect));
             loops = new AnimBool();
             loops.valueChanged.AddListener(Repaint);
             var clips = serializedObject.FindProperty("Clips");
@@ -39,6 +41,7 @@ namespace Shiroi.FX.Editor.Editors {
         }
 
         public override void OnInspectorGUI() {
+            header.DoLayout();
             var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
             EditorGUILayout.BeginVertical(skin.box);
             ShiroiFXGUI.DrawTitle(HeaderTitle, HeaderSubtitle);
@@ -54,7 +57,6 @@ namespace Shiroi.FX.Editor.Editors {
 
         private void DrawLoop() {
             ShiroiFXGUI.DrawTitle(LoopTitle, LoopSubtitle);
-
             ShiroiFXGUI.DrawFadeProperty(
                 ref loops,
                 serializedObject.FindProperty("Loop"),
