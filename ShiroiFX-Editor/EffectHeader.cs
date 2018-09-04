@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Shiroi.FX.Editor.Utilities;
 using Shiroi.FX.Effects.Requirements;
 using UnityEditor;
 using UnityEngine;
@@ -85,7 +86,7 @@ namespace Shiroi.FX.Editor {
             for (var i = 0; i < features.Count; i++) {
                 var feature = features[i];
                 EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
-                EditorGUILayout.PrefixLabel(feature.Name);
+                EditorGUILayout.PrefixLabel(feature.GetFriendlyName());
                 TryDrawDescription(i + descriptionOffset);
                 EditorGUILayout.EndHorizontal();
             }

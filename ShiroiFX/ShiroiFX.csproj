@@ -51,6 +51,7 @@
     <Compile Include="Colors\ColorHSV.cs" />
     <Compile Include="Effects\BuiltIn\AudioEffect.cs" />
     <Compile Include="Effects\BuiltIn\CompositeEffect.cs" />
+    <Compile Include="Effects\BuiltIn\FOVEffect.cs" />
     <Compile Include="Effects\BuiltIn\FreezeFrameEffect.cs" />
     <Compile Include="Effects\BuiltIn\ParticleEffect.cs" />
     <Compile Include="Effects\BuiltIn\ValueControlMode.cs" />
@@ -63,12 +64,14 @@
     <Compile Include="Features\FloatFeature.cs" />
     <Compile Include="Features\MaterialFeature.cs" />
     <Compile Include="Features\MinMaxCurveFeature.cs" />
+    <Compile Include="Features\ObjectFeature.cs" />
     <Compile Include="Features\PositionFeature.cs" />
     <Compile Include="Features\VelocityFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BuiltIn\Audio\AudioController.cs" />
     <Compile Include="Services\BuiltIn\Audio\AudioEvent.cs" />
     <Compile Include="Services\BuiltIn\Audio\AudioPool.cs" />
+    <Compile Include="Services\BuiltIn\Camera\FOVController.cs" />
     <Compile Include="Services\BuiltIn\TimeController.cs" />
     <Compile Include="Services\ContinualService.cs" />
     <Compile Include="Services\Service.cs" />

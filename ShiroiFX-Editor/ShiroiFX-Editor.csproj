@@ -58,6 +58,7 @@
     <Compile Include="Editors\AudioEffectEditor.cs" />
     <Compile Include="Editors\CompositeEffectEditor.cs" />
     <Compile Include="Editors\EffectEditor.cs" />
+    <Compile Include="Editors\FOVEffectEditor.cs" />
     <Compile Include="Editors\FreezeFrameEffectEditor.cs" />
     <Compile Include="EffectHeader.cs" />
     <Compile Include="PopUp\EffectSelectorContent.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="ShiroiFXEditor.cs" />
     <Compile Include="ShiroiFXEditorResources.cs" />
     <Compile Include="ShiroiFXGUI.cs" />
+    <Compile Include="Utilities\TypeUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShiroiFX\ShiroiFX.csproj">
