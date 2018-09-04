@@ -27,6 +27,8 @@ namespace Shiroi.FX.Editor.Editors {
                 drawElementCallback = DrawClip,
                 drawHeaderCallback = DrawClipsHeader
             };
+            showPitch = new AnimBool();
+            showPitch.valueChanged.AddListener(Repaint);
         }
 
         private void DrawClipsHeader(Rect rect) {
@@ -68,11 +70,33 @@ namespace Shiroi.FX.Editor.Editors {
             );
         }
 
+        private AnimBool showPitch;
+
         private void DrawVolume() {
             ShiroiFXGUI.DrawTitle(GeneralTitle, GeneralSubtitle);
             clipList.DoLayoutList();
+            var useAudioController = serializedObject.FindProperty("UseAudioControllerIfPresent");
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Volume"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("Pitch"));
+            if (!showPitch.target) {
+                var volume = ((AudioEffect) target).Volume;
+                var volumeCurve = volume.Value;
+                if (volumeCurve.mode == ParticleSystemCurveMode.Curve ||
+                    volumeCurve.mode == ParticleSystemCurveMode.TwoCurves) {
+                    serializedObject.ApplyModifiedProperties();
+                    volumeCurve.mode = ParticleSystemCurveMode.Constant;
+                    volume.Value = volumeCurve;
+                    serializedObject.Update();
+                }
+            }
+
+            using (var group = new EditorGUILayout.FadeGroupScope(showPitch.faded)) {
+                if (group.visible) {
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("Pitch"));
+                }
+            }
+
+            EditorGUILayout.PropertyField(useAudioController);
+            showPitch.target = useAudioController.boolValue;
         }
     }
 }
