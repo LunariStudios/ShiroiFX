@@ -1,4 +1,6 @@
-﻿namespace Shiroi.FX.Services {
+﻿using UnityEngine.Rendering;
+
+namespace Shiroi.FX.Services {
     /// <summary>
     /// This represents a request that was made to a <see cref="ServiceController{T}"/>.
     /// <br/>

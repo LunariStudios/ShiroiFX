@@ -24,7 +24,9 @@ namespace Shiroi.FX.Services {
 
     public enum ServiceBlendMode {
         Blend,
-        UseHighestPriority
+        UseHighestPriority,
+        UseNewest,
+        UseHighestPriorityThenNewest
     }
 
     /// <summary>
@@ -61,18 +63,59 @@ namespace Shiroi.FX.Services {
                         => new WeightnedMeta<T>((float) service.Priority / totalPriority, service.Meta));
                     UpdateGameTo(metas);
                     break;
-                case ServiceBlendMode.UseHighestPriority:
-                    var highest = activeServices.MaxBy(service => service.Priority);
-                    var s = highest as Service<T>;
+                default:
+                    var s = GetServiceToUse() as Service<T>;
                     if (s == null) {
                         return;
                     }
 
                     UpdateGameTo(s.Meta);
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private static Service FindNewest(IEnumerable<Service> services) {
+            ITimedService timedService = null;
+            foreach (var activeService in services) {
+                var s = activeService as ITimedService;
+                if (s == null) {
+                    //Doesn't have time, consider duration always 0
+                    return activeService;
+                }
+
+                if (timedService == null || timedService.TimeLeft < s.TimeLeft) {
+                    timedService = s;
+                }
+            }
+
+            return (Service) timedService;
+        }
+
+        private Service GetServiceToUse() {
+            switch (BlendMode) {
+                case ServiceBlendMode.UseHighestPriority:
+                    return activeServices.MaxBy(service => service.Priority);
+
+                case ServiceBlendMode.UseNewest:
+                    return FindNewest(activeServices);
+
+                case ServiceBlendMode.UseHighestPriorityThenNewest:
+                    var highestPriority = activeServices.Max(service => service.Priority);
+                    var services = new List<Service>();
+                    foreach (var activeService in activeServices) {
+                        if (activeService.Priority == highestPriority) {
+                            services.Add(activeService);
+                        }
+                    }
+
+                    if (services.Count == 0) {
+                        return services.First();
+                    }
+
+                    return FindNewest(services);
+            }
+
+            return null;
         }
 
         private void ResetState() {

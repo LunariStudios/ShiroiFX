@@ -1,4 +1,6 @@
-﻿using Shiroi.FX.Utilities;
+﻿using System;
+using Shiroi.FX.Utilities;
+using UnityEngine.Rendering;
 
 namespace Shiroi.FX.Services {
     /// <summary>
@@ -30,5 +32,6 @@ namespace Shiroi.FX.Services {
         public override void Cancel() {
             Cancelled = true;
         }
+
     }
 }
