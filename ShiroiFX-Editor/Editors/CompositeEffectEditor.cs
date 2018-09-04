@@ -31,6 +31,7 @@ namespace Shiroi.FX.Editor.Editors {
             var fx = (Effect) effect.AddToAssetFile(obj);
             fx.name = ObjectNames.GetUniqueName(effect.Effects.Select(effect1 => effect1.name).ToArray(), obj.Name);
             effect.Effects.Add(fx);
+            AssetDatabase.SaveAssets();
         }
 
         public override void OnInspectorGUI() {
@@ -58,8 +59,13 @@ namespace Shiroi.FX.Editor.Editors {
 
             foreach (var fx in toRemove) {
                 effect.Effects.Remove(fx);
-                Destroy(fx);
+                DestroyImmediate(fx, true);
             }
+
+            if (toRemove.Count > 0) {
+                AssetDatabase.SaveAssets();
+            }
+
             EditorGUILayout.EndVertical();
         }
 

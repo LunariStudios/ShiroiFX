@@ -9,25 +9,30 @@ using UnityUtilities.Editor;
 
 namespace Shiroi.FX.Editor {
     public static class ShiroiFXEditor {
-        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Create Composite Effect", false, 5)]
+        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Composite Effect", false, 5)]
         public static void CreateCompositeEffect() {
             CreateEffect<CompositeEffect>();
         }
 
-        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Create Particle Effect", false, 5)]
+        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Particle Effect", false, 5)]
         public static void CreateParticleEffect() {
             CreateEffect<ParticleEffect>();
         }
 
-        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Create Freeze Frame Effect", false, 5)]
+        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Freeze Frame Effect", false, 5)]
         public static void CreateFreezeFrameEffect() {
             CreateEffect<FreezeFrameEffect>();
         }
 
 
-        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Create Audio Effect", false, 5)]
+        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Audio Effect", false, 5)]
         public static void CreateAudioEffect() {
             CreateEffect<AudioEffect>();
+        }
+
+        [MenuItem(ShiroiFXEditorResources.BaseCreatePath + "Field Of View Effect", false, 5)]
+        public static void CreateFOVEffect() {
+            CreateEffect<FOVEffect>();
         }
 
         private static void CreateEffect<T>() where T : ScriptableObject {
