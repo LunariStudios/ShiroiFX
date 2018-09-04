@@ -14,6 +14,10 @@ namespace Shiroi.FX.Services.BuiltIn {
             Time.timeScale = activeMetas.Sum(weightnedMeta => weightnedMeta.Weight * weightnedMeta.Meta.GetTimeScale());
         }
 
+        protected override void UpdateGameTo(TimeMeta meta) {
+            Time.timeScale = meta.GetTimeScale();
+        }
+
         public override void RegisterService(Service service) {
             base.RegisterService(service);
             var timed = service as ITimedService;

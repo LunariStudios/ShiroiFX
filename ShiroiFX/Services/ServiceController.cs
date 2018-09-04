@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityUtilities;
@@ -21,6 +22,11 @@ namespace Shiroi.FX.Services {
         }
     }
 
+    public enum ServiceBlendMode {
+        Blend,
+        UseHighestPriority
+    }
+
     /// <summary>
     /// The abstract representation of a feature that can be controlled by multiple different "sources" in your game.
     /// <br/>
@@ -31,6 +37,7 @@ namespace Shiroi.FX.Services {
     public abstract class ServiceController<T> : MonoBehaviour {
         private readonly List<Service> activeServices = new List<Service>();
         private bool hadActiveServiceLastFrame;
+        public ServiceBlendMode BlendMode;
 
         private void Update() {
             if (activeServices.IsEmpty()) {
@@ -47,10 +54,25 @@ namespace Shiroi.FX.Services {
                 return;
             }
 
-            var highestPriority = activeServices.Max(service => service.Priority);
-            var metas = GetAllActiveServices().Select(service
-                => new WeightnedMeta<T>((float) service.Priority / highestPriority, service.Meta));
-            UpdateGameTo(metas);
+            switch (BlendMode) {
+                case ServiceBlendMode.Blend:
+                    var totalPriority = activeServices.Sum(service => service.Priority);
+                    var metas = GetAllActiveServices().Select(service
+                        => new WeightnedMeta<T>((float) service.Priority / totalPriority, service.Meta));
+                    UpdateGameTo(metas);
+                    break;
+                case ServiceBlendMode.UseHighestPriority:
+                    var highest = activeServices.MaxBy(service => service.Priority);
+                    var s = highest as Service<T>;
+                    if (s == null) {
+                        return;
+                    }
+
+                    UpdateGameTo(s.Meta);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void ResetState() {
@@ -65,6 +87,7 @@ namespace Shiroi.FX.Services {
         protected abstract void UpdateGameToDefault();
 
         protected abstract void UpdateGameTo(IEnumerable<WeightnedMeta<T>> activeMetas);
+        protected abstract void UpdateGameTo(T meta);
 
         private static bool ServiceUpdater(Service obj) {
             return obj.Tick();

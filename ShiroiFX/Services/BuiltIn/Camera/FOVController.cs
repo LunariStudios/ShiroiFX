@@ -28,6 +28,10 @@ namespace Shiroi.FX.Services.BuiltIn.Camera {
 
             Camera.fieldOfView = activeMetas.Sum(meta => meta.Weight * meta.Meta.GetFOV());
         }
+
+        protected override void UpdateGameTo(FOVMeta meta) {
+            Camera.fieldOfView = meta.GetFOV();
+        }
     }
 
     public abstract class FOVMeta {

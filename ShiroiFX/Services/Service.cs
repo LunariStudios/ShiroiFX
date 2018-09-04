@@ -6,7 +6,7 @@
     /// change a value of a feature", for example: Time Scale, Material Colors, Particle Colors, etc.
     /// </summary>
     public abstract class Service {
-        public const ushort DefaultPriority = ushort.MaxValue;
+        public const ushort DefaultPriority = 100;
 
         public Service(ushort priority) {
             Priority = priority;
