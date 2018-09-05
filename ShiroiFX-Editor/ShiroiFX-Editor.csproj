@@ -39,15 +39,15 @@
     <Reference Include="UnityEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\ShiroiFX-Libraries\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditorUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\UnityEditorUtilities.1.0.0\lib\net35\UnityEditorUtilities.dll</HintPath>
+    <Reference Include="UnityEditorUtilities, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\UnityEditorUtilities.1.1.0\lib\net35\UnityEditorUtilities.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\ShiroiFX-Libraries\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\UnityUtilities.1.0.0\lib\net35\UnityUtilities.dll</HintPath>
+    <Reference Include="UnityUtilities, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\UnityUtilities.1.1.0\lib\net35\UnityUtilities.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
