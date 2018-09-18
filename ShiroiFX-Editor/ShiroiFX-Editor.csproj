@@ -60,12 +60,14 @@
     <Compile Include="Editors\EffectEditor.cs" />
     <Compile Include="Editors\FOVEffectEditor.cs" />
     <Compile Include="Editors\FreezeFrameEffectEditor.cs" />
+    <Compile Include="Editors\ObjectShakeEffectEditor.cs" />
     <Compile Include="EffectHeader.cs" />
     <Compile Include="PopUp\EffectSelectorContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShiroiFXEditor.cs" />
     <Compile Include="ShiroiFXEditorResources.cs" />
     <Compile Include="ShiroiFXGUI.cs" />
+    <Compile Include="ShiroiFXIconHandler.cs" />
     <Compile Include="Utilities\TypeUtility.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +78,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons/ListIcon.png" />
+    <EmbeddedResource Include="Icons/AudioIcon.png" />
+    <EmbeddedResource Include="Icons/ShakeIcon.png" />
+    <EmbeddedResource Include="Icons/TimeIcon.png" />
+    <EmbeddedResource Include="Icons/ParticleIcon.png" />
+    <EmbeddedResource Include="Icons/DefaultIcon.png" />
+    <EmbeddedResource Include="Icons/FOVIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

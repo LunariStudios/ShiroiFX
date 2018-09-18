@@ -19,6 +19,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShiroiFX-Assets", "ShiroiFX-Assets", "{E9BC1A6D-4CEE-4C84-85A3-FE49F5FB83E3}"
 ProjectSection(SolutionItems) = preProject
 	ShiroiFX-Assets\Logo.png = ShiroiFX-Assets\Logo.png
+	ShiroiFX-Editor\Icons\AudioIcon.png = ShiroiFX-Editor\Icons\AudioIcon.png
+	ShiroiFX-Editor\Icons\ListIcon.png = ShiroiFX-Editor\Icons\ListIcon.png
+	ShiroiFX-Editor\Icons\ShakeIcon.png = ShiroiFX-Editor\Icons\ShakeIcon.png
+	ShiroiFX-Editor\Icons\TimeIcon.png = ShiroiFX-Editor\Icons\TimeIcon.png
+	ShiroiFX-Editor\Icons\FOVIcon.png = ShiroiFX-Editor\Icons\FOVIcon.png
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShiroiFX-Examples", "ShiroiFX-Examples\ShiroiFX-Examples.csproj", "{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}"
@@ -39,9 +44,9 @@ Global
 		{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{260FD352-D0C6-4AAF-8EC9-530EFAD62E69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2730FB94-C4A7-46AD-89E4-ABA9E19429F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

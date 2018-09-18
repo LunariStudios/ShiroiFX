@@ -6,6 +6,7 @@ using Shiroi.FX.Utilities;
 using UnityEngine;
 
 namespace Shiroi.FX.Effects.BuiltIn {
+    [Icon(Icons.TimeIcon)]
     public class FreezeFrameEffect : Effect {
         [Tooltip("The effect scale to be used when in the Constant mode")]
         public float ConstantTimeScale;

@@ -53,6 +53,7 @@
     <Compile Include="Effects\BuiltIn\CompositeEffect.cs" />
     <Compile Include="Effects\BuiltIn\FOVEffect.cs" />
     <Compile Include="Effects\BuiltIn\FreezeFrameEffect.cs" />
+    <Compile Include="Effects\BuiltIn\ObjectShakeEffect.cs" />
     <Compile Include="Effects\BuiltIn\ParticleEffect.cs" />
     <Compile Include="Effects\BuiltIn\ValueControlMode.cs" />
     <Compile Include="Effects\Effect.cs" />
@@ -72,11 +73,13 @@
     <Compile Include="Services\BuiltIn\Audio\AudioEvent.cs" />
     <Compile Include="Services\BuiltIn\Audio\AudioPool.cs" />
     <Compile Include="Services\BuiltIn\Camera\FOVController.cs" />
+    <Compile Include="Services\BuiltIn\ObjectShakeController.cs" />
     <Compile Include="Services\BuiltIn\TimeController.cs" />
     <Compile Include="Services\ContinualService.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\ServiceController.cs" />
     <Compile Include="Services\TimedService.cs" />
+    <Compile Include="Utilities\Icons.cs" />
     <Compile Include="Utilities\ModularFloat.cs" />
     <Compile Include="Utilities\EffectUtilities.cs" />
     <Compile Include="Utilities\ITickable.cs" />

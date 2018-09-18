@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Shiroi.FX.Effects.BuiltIn;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
@@ -47,7 +48,36 @@ namespace Shiroi.FX.Editor {
             if (EditorGUILayout.BeginFadeGroup(loops.faded)) {
                 draw();
             }
+
             EditorGUILayout.EndFadeGroup();
+        }
+
+        public static EditorGUILayout.VerticalScope EffectBox(out GUISkin skin) {
+            skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
+            return new EditorGUILayout.VerticalScope(skin.box);
+        }
+
+        public static void DrawAndApplyProperties(SerializedObject obj, params string[] properties) {
+            DrawAndApplyProperties(obj, properties.Select(obj.FindProperty).ToArray());
+        }
+
+        public static void DrawAndApplyProperties(SerializedObject obj, params SerializedProperty[] properties) {
+            if (DrawProperties(properties)) {
+                obj.ApplyModifiedProperties();
+            }
+        }
+
+        public static bool DrawProperties(params SerializedProperty[] properties) {
+            var modified = false;
+            foreach (var property in properties) {
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(property);
+                if (EditorGUI.EndChangeCheck()) {
+                    modified = true;
+                }
+            }
+
+            return modified;
         }
     }
 }

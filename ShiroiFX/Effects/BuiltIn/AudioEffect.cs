@@ -21,6 +21,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
         "Used for pitch and/or volume if their sources are set to be the context",
         "Used for loop duration if it's in use and source is set to be the context"
     )]
+    [Icon(Icons.AudioIcon)]
     public class AudioEffect : Effect {
         public AudioClip[] Clips;
         public ContinousModularFloat Volume = 0.6F;

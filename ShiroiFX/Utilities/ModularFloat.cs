@@ -1,4 +1,6 @@
 ﻿using System;
+using Shiroi.FX.Effects;
+using Shiroi.FX.Features;
 using UnityEngine;
 
 namespace Shiroi.FX.Utilities {
@@ -19,6 +21,17 @@ namespace Shiroi.FX.Utilities {
         public static implicit operator ContinousModularFloat(float value) {
             return new ContinousModularFloat {Value = value};
         }
+
+        public float Evaluate(EffectContext context, float time) {
+            switch (Source) {
+                case PropertySource.Effect:
+                    return Value.Evaluate(time);
+                case PropertySource.Context:
+                    return context.GetRequiredFeatureWithTags<FloatFeature>(TagName).Value;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 
 
@@ -30,5 +43,15 @@ namespace Shiroi.FX.Utilities {
             return new TimelessModularFloat {Value = value};
         }
 
+        public float Evaluate(EffectContext context) {
+            switch (Source) {
+                case PropertySource.Effect:
+                    return Value.Evaluate();
+                case PropertySource.Context:
+                    return context.GetRequiredFeatureWithTags<FloatFeature>(TagName).Value;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }

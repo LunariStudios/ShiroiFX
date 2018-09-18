@@ -1,6 +1,7 @@
 ﻿using Shiroi.FX.Colors;
 using Shiroi.FX.Effects.Requirements;
 using Shiroi.FX.Features;
+using Shiroi.FX.Utilities;
 using UnityEngine;
 using UnityUtilities;
 
@@ -21,6 +22,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
         "If present, the particle's color is set to the provided min-max gradient. (Is incompatible with the other \"color features\")",
         "If present, the particle's material is set to the provided material."
     )]
+    [Icon(Icons.ParticleIcon)]
     public sealed class ParticleEffect : Effect {
         public ParticleSystem ParticlePrefab;
         public bool ForceDestroyOnFinished = true;

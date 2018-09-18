@@ -13,6 +13,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
     [RequirementsDescription(
         "The controller on which to play the service"
     )]
+    [Icon(Icons.FOVIcon)]
     public class FOVEffect : Effect {
         public ValueControlMode Mode;
         public float ConstantFOV = 60;
