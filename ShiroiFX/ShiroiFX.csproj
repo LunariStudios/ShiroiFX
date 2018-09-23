@@ -81,7 +81,6 @@
     <Compile Include="Services\TimedService.cs" />
     <Compile Include="Utilities\Icons.cs" />
     <Compile Include="Utilities\ModularFloat.cs" />
-    <Compile Include="Utilities\EffectUtilities.cs" />
     <Compile Include="Utilities\ITickable.cs" />
     <Compile Include="Utilities\ModularRange.cs" />
     <Compile Include="Utilities\ObjectPool.cs" />
