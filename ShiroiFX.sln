@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShiroiFX-Root", "ShiroiFX-R
 ProjectSection(SolutionItems) = preProject
 	.gitignore = .gitignore
 	README.md = README.md
-	LICENSE.md = LICENSE.md
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShiroiFX-Assets", "ShiroiFX-Assets", "{E9BC1A6D-4CEE-4C84-85A3-FE49F5FB83E3}"
