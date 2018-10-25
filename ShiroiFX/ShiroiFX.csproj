@@ -41,8 +41,8 @@
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\ShiroiFX-Libraries\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="UnityUtilities, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\UnityUtilities.1.1.0\lib\net35\UnityUtilities.dll</HintPath>
+    <Reference Include="UnityUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\UnityUtilities.1.0.0\lib\net35\UnityUtilities.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
