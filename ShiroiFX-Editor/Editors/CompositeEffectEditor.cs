@@ -6,7 +6,7 @@ using Shiroi.FX.Effects;
 using Shiroi.FX.Effects.BuiltIn;
 using UnityEditor;
 using UnityEngine;
-using UnityUtilities.Editor;
+using Lunari.Tsuki.Editor;
 
 namespace Shiroi.FX.Editor.Editors {
     [CustomEditor(typeof(CompositeEffect))]
@@ -72,10 +72,11 @@ namespace Shiroi.FX.Editor.Editors {
         private void DrawFX<T>(T worldFX, GUISkin skin, out bool remove) where T : ScriptableObject {
             EditorGUILayout.BeginHorizontal();
             if (worldFX == null) {
-                var errorStyle = skin.GetStyle(GUISkinProperties.CNStatusError);
+                var errorStyle = skin.GetStyle(GUIStyles.CNStatusError);
                 EditorGUILayout.LabelField(ShiroiFXEditorResources.NullFXError, errorStyle,
                     GUILayout.ExpandWidth(true));
-            } else {
+            }
+            else {
                 worldFX.name = EditorGUILayout.TextField(worldFX.name);
                 if (GUILayout.Button(ShiroiFXEditorResources.EditFX, GUILayout.ExpandWidth(false))) {
                     Selection.SetActiveObjectWithContext(worldFX, this);

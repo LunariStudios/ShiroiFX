@@ -5,7 +5,7 @@ using Shiroi.FX.Services.BuiltIn.Audio;
 using Shiroi.FX.Utilities;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityUtilities;
+using Lunari.Tsuki;
 using Random = UnityEngine.Random;
 
 namespace Shiroi.FX.Effects.BuiltIn {

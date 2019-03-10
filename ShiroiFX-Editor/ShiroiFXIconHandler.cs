@@ -4,7 +4,7 @@ using Shiroi.FX.Effects.BuiltIn;
 using Shiroi.FX.Utilities;
 using UnityEditor;
 using UnityEngine;
-using UnityUtilities;
+using Lunari.Tsuki;
 
 namespace Shiroi.FX.Editor {
     public class ShiroiFXIconHandler : AssetPostprocessor {

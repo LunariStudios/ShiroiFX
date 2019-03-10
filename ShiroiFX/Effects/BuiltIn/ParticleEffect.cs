@@ -3,7 +3,7 @@ using Shiroi.FX.Effects.Requirements;
 using Shiroi.FX.Features;
 using Shiroi.FX.Utilities;
 using UnityEngine;
-using UnityUtilities;
+using Lunari.Tsuki;
 
 namespace Shiroi.FX.Effects.BuiltIn {
     [RequiresFeature(typeof(PositionFeature))]

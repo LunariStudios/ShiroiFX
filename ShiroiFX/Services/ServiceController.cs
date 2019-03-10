@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityUtilities;
+using Lunari.Tsuki;
 
 namespace Shiroi.FX.Services {
     public class WeightnedMeta<T> {

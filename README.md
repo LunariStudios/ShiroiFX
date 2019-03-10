@@ -21,7 +21,7 @@ ShiroiFX is also available as a NuGet package at https://repo.imddevil.com/repos
 You can use it by adding the package to your packages.config like:
 ```
 <packages>
-  <package id="UnityUtilities" version="1.0.0" targetFramework="net35" />
+  <package id="Lunari.Tsuki" version="1.0.0" targetFramework="net35" />
 </packages>
 ```
 and the repository to your NuGet.config file:

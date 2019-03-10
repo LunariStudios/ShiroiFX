@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityUtilities;
+using Lunari.Tsuki;
 
 namespace Shiroi.FX.Utilities {
     public abstract class ObjectPool<T> : MonoBehaviour where T : Component {

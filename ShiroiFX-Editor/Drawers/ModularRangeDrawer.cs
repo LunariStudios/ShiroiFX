@@ -2,7 +2,7 @@
 using Shiroi.FX.Utilities;
 using UnityEditor;
 using UnityEngine;
-using UnityUtilities.Editor;
+using Lunari.Tsuki.Editor;
 
 namespace Shiroi.FX.Editor.Drawers {
     [CustomPropertyDrawer(typeof(ModularRange))]

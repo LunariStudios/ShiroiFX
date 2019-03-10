@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Shiroi.FX.Editor.Utilities;
+using Lunari.Tsuki;
 using Shiroi.FX.Effects.Requirements;
 using UnityEditor;
 using UnityEngine;
@@ -86,7 +86,7 @@ namespace Shiroi.FX.Editor {
             for (var i = 0; i < features.Count; i++) {
                 var feature = features[i];
                 EditorGUILayout.BeginHorizontal(EditorStyles.helpBox);
-                EditorGUILayout.PrefixLabel(feature.GetFriendlyName());
+                EditorGUILayout.PrefixLabel(feature.GetLegibleName());
                 TryDrawDescription(i + descriptionOffset);
                 EditorGUILayout.EndHorizontal();
             }

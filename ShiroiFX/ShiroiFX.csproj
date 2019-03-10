@@ -35,15 +35,15 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tsuki-Runtime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Lunari.Tsuki.2.0.0\lib\net35\Tsuki-Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\ShiroiFX-Libraries\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\ShiroiFX-Libraries\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\UnityUtilities.1.0.0\lib\net35\UnityUtilities.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

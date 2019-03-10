@@ -1,7 +1,7 @@
 ﻿using Shiroi.FX.Effects;
 using Shiroi.FX.Features;
 using UnityEngine;
-using UnityUtilities;
+using Lunari.Tsuki;
 
 namespace Shiroi.FX.Colors {
     public sealed class ColorFeature : EffectFeature {

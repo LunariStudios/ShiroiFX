@@ -5,7 +5,7 @@ using Shiroi.FX.Features;
 using Shiroi.FX.Services.BuiltIn;
 using Shiroi.FX.Utilities;
 using UnityEngine;
-using UnityUtilities;
+using Lunari.Tsuki;
 using Random = System.Random;
 
 namespace Shiroi.FX.Effects.BuiltIn {
@@ -132,9 +132,9 @@ namespace Shiroi.FX.Effects.BuiltIn {
             }
 
             public void Randomize() {
-                x = RandomUtility.NextBool();
-                y = RandomUtility.NextBool();
-                z = RandomUtility.NextBool();
+                x = Randomization.NextBool();
+                y = Randomization.NextBool();
+                z = Randomization.NextBool();
             }
         }
     }

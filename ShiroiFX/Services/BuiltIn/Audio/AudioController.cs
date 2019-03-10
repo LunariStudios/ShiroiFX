@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityUtilities.Singletons;
+using Lunari.Tsuki.Singletons;
 
 namespace Shiroi.FX.Services.BuiltIn.Audio {
     [RequireComponent(typeof(AudioPool))]
