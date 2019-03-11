@@ -10,22 +10,17 @@ using UnityEngine;
 namespace Shiroi.FX.Effects {
     [Serializable]
     public sealed class EffectContext {
-        private readonly MonoBehaviour host;
         private readonly EffectFeature[] features;
 
         public EffectContext(MonoBehaviour host, params EffectFeature[] features) {
             this.features = features;
-            this.host = host;
+            Host = host;
         }
 
-        public MonoBehaviour Host {
-            get {
-                return host;
-            }
-        }
+        public MonoBehaviour Host { get; }
 
         public Coroutine StartCoroutine(IEnumerator routine) {
-            return host.StartCoroutine(routine);
+            return Host.StartCoroutine(routine);
         }
 
         [CanBeNull]

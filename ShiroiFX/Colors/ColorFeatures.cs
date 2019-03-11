@@ -5,52 +5,30 @@ using Lunari.Tsuki;
 
 namespace Shiroi.FX.Colors {
     public sealed class ColorFeature : EffectFeature {
-        private readonly Color color;
-
         public ColorFeature(Color color, params PropertyName[] tags) : base(tags) {
-            this.color = color;
+            Color = color;
         }
 
-        public Color Color {
-            get {
-                return color;
-            }
-        }
+        public Color Color { get; }
     }
 
     public sealed class GradientFeature : EffectFeature {
-        private readonly Gradient gradient;
-
         public GradientFeature(Gradient gradient, params PropertyName[] tags) : base(tags) {
-            this.gradient = gradient;
+            Gradient = gradient;
         }
 
-        public Gradient Gradient {
-            get {
-                return gradient;
-            }
-        }
+        public Gradient Gradient { get; }
     }
 
     public sealed class MinMaxColorFeature : EffectFeature {
-        private readonly Color colorMin, colorMax;
-
         public MinMaxColorFeature(Color colorMin, Color colorMax, params PropertyName[] tags) : base(tags) {
-            this.colorMin = colorMin;
-            this.colorMax = colorMax;
+            ColorMin = colorMin;
+            ColorMax = colorMax;
         }
 
-        public Color ColorMin {
-            get {
-                return colorMin;
-            }
-        }
+        public Color ColorMin { get; }
 
-        public Color ColorMax {
-            get {
-                return colorMax;
-            }
-        }
+        public Color ColorMax { get; }
 
         public Color Color {
             get {
@@ -60,46 +38,29 @@ namespace Shiroi.FX.Colors {
     }
 
     public sealed class RandomColorFeature : EffectFeature {
-        private readonly Color[] colors;
-
         public RandomColorFeature(Color[] colors, params PropertyName[] tags) : base(tags) {
-            this.colors = colors;
+            Colors = colors;
         }
 
-        public Color[] Colors {
-            get {
-                return colors;
-            }
-        }
+        public Color[] Colors { get; }
 
         public Color Color {
             get {
-                return colors.RandomElement();
+                return Colors.RandomElement();
             }
         }
     }
 
     public sealed class MinMaxGradientFeature : EffectFeature {
-        private readonly Gradient minGradient, maxGradient;
-
-
         public MinMaxGradientFeature(Gradient minGradient, Gradient maxGradient, params PropertyName[] tags) :
             base(tags) {
-            this.minGradient = minGradient;
-            this.maxGradient = maxGradient;
+            MinGradient = minGradient;
+            MaxGradient = maxGradient;
         }
 
-        public Gradient MinGradient {
-            get {
-                return minGradient;
-            }
-        }
+        public Gradient MinGradient { get; }
 
-        public Gradient MaxGradient {
-            get {
-                return maxGradient;
-            }
-        }
+        public Gradient MaxGradient { get; }
 
         public Color GetColor(float time) {
             var a = MinGradient.Evaluate(time);

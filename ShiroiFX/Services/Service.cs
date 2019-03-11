@@ -10,7 +10,7 @@ namespace Shiroi.FX.Services {
     public abstract class Service {
         public const ushort DefaultPriority = 100;
 
-        public Service(ushort priority) {
+        protected Service(ushort priority) {
             Priority = priority;
         }
 

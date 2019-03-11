@@ -27,7 +27,7 @@ namespace Shiroi.FX.Utilities {
                 case PropertySource.Effect:
                     return Value.Evaluate(time);
                 case PropertySource.Context:
-                    return context.GetRequiredFeatureWithTags<FloatFeature>(TagName).Value;
+                    return context.GetRequiredFeatureWithTags<ObjectFeature<float>>(TagName).Value;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -48,7 +48,7 @@ namespace Shiroi.FX.Utilities {
                 case PropertySource.Effect:
                     return Value.Evaluate();
                 case PropertySource.Context:
-                    return context.GetRequiredFeatureWithTags<FloatFeature>(TagName).Value;
+                    return context.GetRequiredFeatureWithTags<ObjectFeature<float>>(TagName).Value;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

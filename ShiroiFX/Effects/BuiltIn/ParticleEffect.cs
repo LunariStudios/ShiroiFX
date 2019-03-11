@@ -6,6 +6,8 @@ using UnityEngine;
 using Lunari.Tsuki;
 
 namespace Shiroi.FX.Effects.BuiltIn {
+    using MaterialFeature = ObjectFeature<Material>;
+
     [RequiresFeature(typeof(PositionFeature))]
     [OptinalFeature(
         typeof(ColorFeature),
@@ -67,7 +69,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
             var material = context.GetOptionalFeature<MaterialFeature>();
             if (material != null) {
                 var renderer = instance.GetComponent<ParticleSystemRenderer>();
-                renderer.sharedMaterial = material.Material;
+                renderer.sharedMaterial = material.Value;
             }
 
             OnDefaultSetupFinished(instance, context);

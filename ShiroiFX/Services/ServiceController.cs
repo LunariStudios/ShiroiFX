@@ -7,19 +7,13 @@ using Lunari.Tsuki;
 namespace Shiroi.FX.Services {
     public class WeightnedMeta<T> {
         public WeightnedMeta(float weight, T meta) {
-            this.Weight = weight;
-            this.Meta = meta;
+            Weight = weight;
+            Meta = meta;
         }
 
-        public float Weight {
-            get;
-            private set;
-        }
+        public float Weight { get; private set; }
 
-        public T Meta {
-            get;
-            private set;
-        }
+        public T Meta { get; private set; }
     }
 
     public enum ServiceBlendMode {
@@ -64,12 +58,10 @@ namespace Shiroi.FX.Services {
                     UpdateGameTo(metas);
                     break;
                 default:
-                    var s = GetServiceToUse() as Service<T>;
-                    if (s == null) {
-                        return;
+                    if (GetServiceToUse() is Service<T> s) {
+                        UpdateGameTo(s.Meta);
                     }
 
-                    UpdateGameTo(s.Meta);
                     break;
             }
         }
@@ -155,9 +147,7 @@ namespace Shiroi.FX.Services {
         private static S loadedInstance;
 
         public static S Instance {
-            get {
-                return loadedInstance == null ? (loadedInstance = FindObjectOfType<S>()) : loadedInstance;
-            }
+            get { return loadedInstance == null ? (loadedInstance = FindObjectOfType<S>()) : loadedInstance; }
         }
     }
 }

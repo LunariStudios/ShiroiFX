@@ -2,16 +2,10 @@
 
 namespace Shiroi.FX.Features {
     public class FloatFeature : EffectFeature {
-        private float value;
-
         public FloatFeature(float value, params PropertyName[] tags) : base(tags) {
-            this.value = value;
+            Value = value;
         }
 
-        public float Value {
-            get {
-                return value;
-            }
-        }
+        public float Value { get; }
     }
 }

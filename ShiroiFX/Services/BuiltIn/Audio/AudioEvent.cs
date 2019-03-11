@@ -14,8 +14,6 @@ namespace Shiroi.FX.Services.BuiltIn.Audio {
         [SerializeField]
         private ParticleSystem.MinMaxCurve volume;
 
-        private AudioMixerGroup group;
-
         [SerializeField]
         private bool loop;
 
@@ -43,7 +41,7 @@ namespace Shiroi.FX.Services.BuiltIn.Audio {
             this.clip = clip;
             this.pitch = pitch;
             this.volume = volume;
-            this.@group = @group;
+            Group = @group;
             this.loop = loop;
             this.loopDuration = loopDuration;
             this.attachment = attachment;
@@ -63,7 +61,7 @@ namespace Shiroi.FX.Services.BuiltIn.Audio {
             this.volume = volume;
             this.loop = loop;
             this.loopDuration = loopDuration;
-            this.@group = @group;
+            Group = @group;
             this.position = position;
             this.velocity = velocity;
         }
@@ -104,11 +102,7 @@ namespace Shiroi.FX.Services.BuiltIn.Audio {
             }
         }
 
-        public AudioMixerGroup Group {
-            get {
-                return @group;
-            }
-        }
+        public AudioMixerGroup Group { get; }
 
         public bool Loop {
             get {

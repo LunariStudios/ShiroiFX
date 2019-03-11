@@ -15,23 +15,15 @@ namespace Shiroi.FX.Services {
         /// <summary>
         /// Whether or not this service should finish it's execution on the next tick.
         /// </summary>
-        public bool Cancelled {
-            get;
-            private set;
-        }
+        public bool Cancelled { get; private set; }
 
         public override bool Tick() {
-            var t = Meta as ITickable;
-            if (t != null) {
-                t.Tick();
-            }
-
+            (Meta as ITickable)?.Tick();
             return Cancelled;
         }
 
         public override void Cancel() {
             Cancelled = true;
         }
-
     }
 }

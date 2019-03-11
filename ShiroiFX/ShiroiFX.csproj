@@ -64,8 +64,6 @@
     <Compile Include="Effects\Requirements\RequirementAttributes.cs" />
     <Compile Include="Features\EffectFeature.cs" />
     <Compile Include="Features\FloatFeature.cs" />
-    <Compile Include="Features\MaterialFeature.cs" />
-    <Compile Include="Features\MinMaxCurveFeature.cs" />
     <Compile Include="Features\ObjectFeature.cs" />
     <Compile Include="Features\PositionFeature.cs" />
     <Compile Include="Features\VelocityFeature.cs" />

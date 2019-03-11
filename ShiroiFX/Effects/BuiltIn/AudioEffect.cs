@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Lunari.Tsuki;
 using Random = UnityEngine.Random;
+using MinMaxCurveFeature = Shiroi.FX.Features.ObjectFeature<UnityEngine.ParticleSystem.MinMaxCurve>;
 
 namespace Shiroi.FX.Effects.BuiltIn {
     [OptinalFeature(
@@ -37,7 +38,8 @@ namespace Shiroi.FX.Effects.BuiltIn {
             AudioController controller;
             if (UseAudioControllerIfPresent && (controller = AudioController.Instance) != null) {
                 PlayWithController(position, context, clip, controller);
-            } else {
+            }
+            else {
                 var pos = position == null ? context.Host.transform.position : position.Position;
                 PlayStandalone(pos, clip, context);
             }
@@ -55,7 +57,8 @@ namespace Shiroi.FX.Effects.BuiltIn {
             var loopDuration = LoadLoopDuration(context);
             if (position == null) {
                 audioEvent = new AudioEvent(clip, pitch, volume, Loop, loopDuration, Mixer, context.Host.transform);
-            } else {
+            }
+            else {
                 var velFeature = context.GetOptionalFeature<VelocityFeature>();
                 var velocity = velFeature != null ? velFeature.Velocity : Vector3.zero;
                 audioEvent = new AudioEvent(clip, pitch, volume, position.Position, Loop, loopDuration, Mixer,
@@ -81,7 +84,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
                 case PropertySource.Effect:
                     return Pitch.Value;
                 case PropertySource.Context:
-                    return context.GetRequiredFeatureWithTags<MinMaxCurveFeature>(Pitch.TagName).Curve;
+                    return context.GetRequiredFeatureWithTags<MinMaxCurveFeature>(Pitch.TagName).Value;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -92,7 +95,7 @@ namespace Shiroi.FX.Effects.BuiltIn {
                 case PropertySource.Effect:
                     return Volume.Value;
                 case PropertySource.Context:
-                    return context.GetRequiredFeatureWithTags<MinMaxCurveFeature>(Volume.TagName).Curve;
+                    return context.GetRequiredFeatureWithTags<MinMaxCurveFeature>(Volume.TagName).Value;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

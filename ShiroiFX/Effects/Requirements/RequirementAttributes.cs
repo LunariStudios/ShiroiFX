@@ -33,16 +33,10 @@ namespace Shiroi.FX.Effects.Requirements {
 
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class RequirementsDescription : Attribute {
-        private readonly string[] descriptions;
-
         public RequirementsDescription(params string[] descriptions) {
-            this.descriptions = descriptions;
+            Descriptions = descriptions;
         }
 
-        public string[] Descriptions {
-            get {
-                return descriptions;
-            }
-        }
+        public string[] Descriptions { get; }
     }
 }

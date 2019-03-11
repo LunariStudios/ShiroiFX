@@ -2,16 +2,10 @@
 
 namespace Shiroi.FX.Features {
     public class ObjectFeature<T> : EffectFeature {
-        private readonly T value;
-
         public ObjectFeature(T value, params PropertyName[] tags) : base(tags) {
-            this.value = value;
+            Value = value;
         }
 
-        public T Value {
-            get {
-                return value;
-            }
-        }
+        public T Value { get; }
     }
 }

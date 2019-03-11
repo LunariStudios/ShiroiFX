@@ -14,7 +14,7 @@ namespace Shiroi.FX.Editor.PopUp {
         private Action<Type> onSelected;
 
         public EffectSelectorContent(Action<Type> onSelected) {
-            this.types = Types.GetAllTypesOf<Effect>().Where(type => type != typeof(Effect)).ToList();
+            types = Types.GetAllTypesOf<Effect>().Where(type => type != typeof(Effect)).ToList();
             this.onSelected = onSelected;
         }
 
