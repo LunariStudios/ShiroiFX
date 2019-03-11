@@ -15,23 +15,16 @@
 This library was made to make creating game feel and effects easily.
   
 Licensed under MIT, feel free to use, contribute, make suggestions and critiques!
-
-## NuGet
-ShiroiFX is also available as a NuGet package at https://repo.imddevil.com/repository/nuget/.  
-You can use it by adding the package to your packages.config like:
-```
-<packages>
-  <package id="Lunari.Tsuki" version="1.0.0" targetFramework="net35" />
-</packages>
-```
-and the repository to your NuGet.config file:
-```
-<configuration>
-  <packageSources>
-    <add key="imddevil.com" value="http://repo.imddevil.com/repository/nuget/" />
-  </packageSources>
-</configuration>
-```
+## Installation
+### Direct download
+1. Download the latest release available [here](https://github.com/LunariStudios/ShiroiFX/releases).
+2. Unzip the files into your Unity project _(The /Plugins/ShiroiFX directory is preferred, but not obligatory)_
+3. Wait for Unity to import the library and you're good to go
+### Compiling from sources 
+1. Clone the repository.
+2. Install [TsukiSuite](https://github.com/LunariStudios/TsukiSuite) via NuGet.
+3. Compile using MSBuild.
+4. Include the follow
 ## Features
 * Created to be absurdly easy to use.
 * Ever wanted to affect something with multiple different values 
