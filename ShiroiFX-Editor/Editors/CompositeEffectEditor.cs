@@ -7,6 +7,9 @@ using Shiroi.FX.Effects.BuiltIn;
 using UnityEditor;
 using UnityEngine;
 using Lunari.Tsuki.Editor;
+using Lunari.Tsuki.Editor.Extenders;
+using Lunari.Tsuki.Editor.Utilities;
+using Shiroi.FX.Features;
 
 namespace Shiroi.FX.Editor.Editors {
     [CustomEditor(typeof(CompositeEffect))]
@@ -20,11 +23,13 @@ namespace Shiroi.FX.Editor.Editors {
         );
 
         private CompositeEffect effect;
-        private EffectSelectorContent effectSelector;
+        private TypeSelectorButton effectSelector;
 
         private void OnEnable() {
             effect = (CompositeEffect) target;
-            effectSelector = new EffectSelectorContent(OnEffectAdded);
+            effectSelector =
+                TypeSelectorButton.Of<Effect>(new ModularContent<GUIContent>(ShiroiFXEditorResources.AddEffect),
+                    OnEffectAdded);
         }
 
         private void OnEffectAdded(Type obj) {
@@ -36,37 +41,30 @@ namespace Shiroi.FX.Editor.Editors {
 
         public override void OnInspectorGUI() {
             var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
-            EditorGUILayout.BeginVertical(skin.box);
-            ShiroiFXGUI.DrawTitle(CompositeEffectTitle, CompositeEffectSubtitle);
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel("Sub Effects", EditorStyles.boldLabel);
-            var r = GUILayout.Button(ShiroiFXEditorResources.AddEffect);
-            var buttonRect = Event.current.type == EventType.Repaint ? GUILayoutUtility.GetLastRect() : default(Rect);
+            using (new EditorGUILayout.VerticalScope()) {
+                ShiroiFXGUI.DrawTitle(CompositeEffectTitle, CompositeEffectSubtitle);
+                using (new EditorGUILayout.HorizontalScope()) {
+                    EditorGUILayout.PrefixLabel("Sub Effects", EditorStyles.boldLabel);
+                    effectSelector.OnInspectorGUI();
+                }
 
-            if (r) {
-                PopupWindow.Show(buttonRect, effectSelector);
-            }
+                var toRemove = new List<Effect>();
+                foreach (var subEffect in effect.Effects) {
+                    DrawFX(subEffect, skin, out var remove);
+                    if (remove) {
+                        toRemove.Add(subEffect);
+                    }
+                }
 
-            EditorGUILayout.EndHorizontal();
-            var toRemove = new List<Effect>();
-            foreach (var subEffect in effect.Effects) {
-                bool remove;
-                DrawFX(subEffect, skin, out remove);
-                if (remove) {
-                    toRemove.Add(subEffect);
+                foreach (var fx in toRemove) {
+                    effect.Effects.Remove(fx);
+                    DestroyImmediate(fx, true);
+                }
+
+                if (toRemove.Count > 0) {
+                    AssetDatabase.SaveAssets();
                 }
             }
-
-            foreach (var fx in toRemove) {
-                effect.Effects.Remove(fx);
-                DestroyImmediate(fx, true);
-            }
-
-            if (toRemove.Count > 0) {
-                AssetDatabase.SaveAssets();
-            }
-
-            EditorGUILayout.EndVertical();
         }
 
         private void DrawFX<T>(T worldFX, GUISkin skin, out bool remove) where T : ScriptableObject {
