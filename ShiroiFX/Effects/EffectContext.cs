@@ -31,8 +31,7 @@ namespace Shiroi.FX.Effects {
         [NotNull]
         public F GetRequiredFeature<F>() where F : EffectFeature {
             foreach (var feature in features) {
-                var f = feature as F;
-                if (f != null) {
+                if (feature is F f) {
                     return f;
                 }
             }
@@ -41,11 +40,14 @@ namespace Shiroi.FX.Effects {
         }
 
         [CanBeNull]
-        public F GetOptinalFeatureWithTags<F>(params PropertyName[] tags) where F : EffectFeature {
+        public F GetOptionalFeatureWithTags<F>(params PropertyName[] tags) where F : EffectFeature {
             foreach (var feature in features) {
-                var f = feature as F;
-                if (f == null) {
+                if (!(feature is F f)) {
                     continue;
+                }
+
+                if (tags.All(name => f.Tags.Contains(name))) {
+                    return f;
                 }
             }
 
@@ -55,8 +57,7 @@ namespace Shiroi.FX.Effects {
         [NotNull]
         public F GetRequiredFeatureWithTags<F>(params PropertyName[] tags) where F : EffectFeature {
             foreach (var feature in features) {
-                var f = feature as F;
-                if (f != null) {
+                if (feature is F f) {
                     return f;
                 }
             }
