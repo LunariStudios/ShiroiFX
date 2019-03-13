@@ -66,13 +66,12 @@ namespace Shiroi.FX.Effects.BuiltIn {
                 SetParticleColor(instance, minMaxGradient);
             }
 
-            var material = context.GetOptionalFeature<MaterialFeature>();
-            if (material != null) {
+            
+            if (context.TryGetOptionalFeature<MaterialFeature>(out var material)) {
                 var renderer = instance.GetComponent<ParticleSystemRenderer>();
                 renderer.sharedMaterial = material.Value;
             }
 
-            OnDefaultSetupFinished(instance, context);
             if (!ForceDestroyOnFinished) {
                 return;
             }
@@ -84,7 +83,6 @@ namespace Shiroi.FX.Effects.BuiltIn {
             }
         }
 
-        private void OnDefaultSetupFinished(ParticleSystem instance, EffectContext context) { }
 
         private static void SetParticleColor(ParticleSystem instance, MinMaxGradientFeature minMaxGradient) {
             var main = instance.main;

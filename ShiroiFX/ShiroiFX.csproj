@@ -78,6 +78,7 @@
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\ServiceController.cs" />
     <Compile Include="Services\TimedService.cs" />
+    <Compile Include="Utilities\Effects.cs" />
     <Compile Include="Utilities\Icons.cs" />
     <Compile Include="Utilities\ModularFloat.cs" />
     <Compile Include="Utilities\ITickable.cs" />
